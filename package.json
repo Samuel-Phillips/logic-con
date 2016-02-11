@@ -1,0 +1,17 @@
+{
+    "name": "logic-con",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "scripts": {
+        "prepublish": "make"
+    },
+    "files": [
+        "console.js",
+        "shell.js",
+        "logic-con",
+        "syntax.js"
+    ],
+    "bin": "logic-con",
+    "man": "logic-con.1",
+    "private": true
+}
