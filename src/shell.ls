@@ -1,5 +1,5 @@
 const readline = require \readline
-const Console = require "./console"
+const Console = require "../lib/console"
 process.stdin.set-encoding \utf8
 
 const rl = readline.create-interface {

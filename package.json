@@ -5,13 +5,14 @@
     "scripts": {
         "prepublish": "make"
     },
-    "files": [
-        "console.js",
-        "shell.js",
-        "logic-con",
-        "syntax.js"
-    ],
-    "bin": "logic-con",
-    "man": "logic-con.1",
+    "directories": {
+        "lib": "lib",
+        "bin": "bin"
+    },
+    "devDependencies": {
+        "livescript": ">=1.4.0 <2.0.0",
+        "pegjs": "~0.9.0"
+    },
+    "preferGlobal": true,
     "private": true
 }

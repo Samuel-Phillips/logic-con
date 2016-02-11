@@ -1,13 +1,13 @@
-logic-con: shell.js
+bin/logic-con: lib/shell.js
 	echo "#!/usr/bin/env nodejs" > $@
-	cat shell.js >> $@
+	cat $< >> $@
 	chmod +x $@
 
-console.js: console.ls syntax.js
+lib/console.js: src/console.ls lib/syntax.js
 	lsc -cp $< > $@ 
 
-shell.js: shell.ls console.js
+lib/shell.js: src/shell.ls lib/console.js
 	lsc -cp $< > $@ 
 
-syntax.js: syntax.pegjs
+lib/syntax.js: src/syntax.pegjs
 	pegjs $< $@

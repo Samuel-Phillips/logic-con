@@ -1,4 +1,4 @@
-{parse: _parse} = require './syntax.js'
+{parse: _parse} = require '../lib/syntax.js'
 
 function pprint ex
     if ex.type
