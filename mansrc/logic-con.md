@@ -57,7 +57,7 @@ NOT: **!**, **¬**
 
 As you can see, it's perfectly possible to type everything with a regular ASCII
 keyboard. **logic-con** will always use the Unicode variants in it's output,
-though. These symbols are accepted by the syntax, so you can copy and past
+though. These symbols are accepted by the syntax, so you can copy and paste
 things if you want.
 
 The "and," "or," and "not" operators should be familiar to you, but there's also
