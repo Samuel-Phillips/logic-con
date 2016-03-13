@@ -36,7 +36,7 @@ constraints.
 :   Dump the expression with Unicode operators and syntax highlighting.
 
 **wha**, **whatis**
-:   Takes a constraint number, the prints the constraint.
+:   Takes a constraint number, then prints the constraint.
 
 # SYNTAX
 
