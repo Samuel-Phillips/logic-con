@@ -43,9 +43,9 @@ constraints.
 Most of the operators in **logic-con** have a Unicode variant, as can be seen in
 this table:
 
-AND: **&&**, **∧**
+AND: **&&**, **∧**, **\***
 
-OR: **||**, **∨**
+OR: **||**, **∨**, **+**
 
 IMPLIES: **->**, **→**
 
@@ -53,7 +53,7 @@ RIMPLIES: **<-**, **←**
 
 DBLIMPLIES: **<->**, **↔**
 
-NOT: **!**, **¬**
+NOT: **!**, **¬**, postfix **'**
 
 As you can see, it's perfectly possible to type everything with a regular ASCII
 keyboard. **logic-con** will always use the Unicode variants in it's output,

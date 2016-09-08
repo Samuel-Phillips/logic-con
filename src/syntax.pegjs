@@ -16,18 +16,19 @@
 
 program = S a:expr S { return a; }
 
-AND "^" = '&&' / '∧'
-OR "∨" = '||' / '∨'
+AND "^" = '&&' / '∧' / '*'
+OR "∨" = '||' / '∨' / '+'
 IMPLIES "→" = '->' / '→'
 RIMPLIES "←" = '<-' / '←'
 DBLIMPLIES "↔" = '<->' / '↔'
 // LEQUIV = '<=>' / '⟺'
 NOT "¬" = '!' / '¬'
+SUFFIX_NOT "'" = "'"
 WHITESPACE = [ \t\r\n\v\f]+
 COMMENT = '[[' (!']]' .)* ']]'
 S "whitespace" = (WHITESPACE / COMMENT)*
 
-keyword = AND / OR / IMPLIES / RIMPLIES / DBLIMPLIES / NOT
+keyword = AND / OR / IMPLIES / RIMPLIES / DBLIMPLIES / NOT / SUFFIX_NOT
 
 parens = a:(
     '(' S expr S ')' /
@@ -36,8 +37,8 @@ parens = a:(
 
 parameter = !keyword a:$([_a-zA-Z0-9]+) { return param(a); }
 
-term = nots:(NOT S)* val:(parameter / parens)
-    { return nots.length%2? not(val) : val; }
+term = nots:(NOT S)* val:(parameter / parens) snots:(S SUFFIX_NOT)*
+    { return (nots.length + snots.length)%2? not(val) : val; }
 
 and = head:term tail:(S AND S a:term {return a;})+
     { return and.apply(this, [head].concat(tail)); }
