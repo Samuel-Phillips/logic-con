@@ -29,6 +29,9 @@ constraints.
 **tab**, **table**
 :   Prints a truth table for the expression.
 
+**rtab**, **rtable**
+:   Same as above but the table will be ordered differently
+
 **def**, **define**
 :   Define a macro to be expanded for all future expressions.
 

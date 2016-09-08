@@ -99,13 +99,13 @@ function get-vars ex
     else
         return []
 
-function makettab vars
+function makettab vars, isrev
     function pfill rows, height, q
         h2 = height * 2
         for i til rows.length / h2
             for j til height
-                rows[i * h2 + j][q] = true
-                rows[i * h2 + height + j][q] = false
+                rows[i * h2 + j][q] = !isrev # true
+                rows[i * h2 + height + j][q] = isrev # false
 
     total = Math.pow(2, vars.length)
     rs = [{} for til total]
@@ -176,12 +176,13 @@ class Console
                     @constraints.push ast
             else if m = line.match /^wha(?:tis)?\s+(\d+)\s*$/
                 console.log unparse @constraints[parseInt m[1], 10]
-            else if m = line.match /^tab(?:le)?\s+(.+)$/
-                ast = @parse m[1]
+            else if m = line.match /^(r?)tab(?:le)?\s+(.+)$/
+                isrev = !!m[1]
+                ast = @parse m[2]
                 vars = get-vars ast
                 vars.sort!
-                tab = makettab vars
-                vars |> (.concat [m[1]]) |> (.map -> "\x1b[33m#{it}\x1b[0m") |>
+                tab = makettab vars, isrev
+                vars |> (.concat [m[2]]) |> (.map -> "\x1b[33m#{it}\x1b[0m") |>
                     (.join SEP) |> console.log
                 for row in tab 
                     res = lc-eval row, ast
