@@ -14,6 +14,5 @@
         "livescript": ">=1.4.0 <2.0.0",
         "pegjs": "~0.9.0"
     },
-    "preferGlobal": true,
-    "private": true
+    "preferGlobal": true
 }
