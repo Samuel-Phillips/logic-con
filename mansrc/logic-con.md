@@ -10,9 +10,8 @@ logic-con - shell for messing with boolean logic
 
 # DESCRIPTION
 
-So there I was, doing my math homework, when I though, "Hey, this would be a fun
-thing to make a computer do! And it ended with the first real "language" I've
-ever written.
+This is a tool I wrote to evaluate boolean logic expressions. It can
+pretty-print them, print truth tables, etc.
 
 It's really useful for simplifying logical expressions: You can just add a
 constraint for the original expression, then keep editing it until you get it to
@@ -36,7 +35,12 @@ constraints.
 :   Define a macro to be expanded for all future expressions.
 
 **syn**, **syntax**
-:   Dump the expression with Unicode operators and syntax highlighting.
+:   Dump the expression with syntax highlighting.
+
+**smode**
+:   Defines which syntax to use with **syn**. Default is `c`. You can also
+specify `m` for math-like Unicode operators, or `e` to use +, - and ' like in my
+digital electronics class.
 
 **wha**, **whatis**
 :   Takes a constraint number, then prints the constraint.
@@ -46,9 +50,11 @@ constraints.
 Most of the operators in **logic-con** have a Unicode variant, as can be seen in
 this table:
 
-AND: **&&**, **∧**, **\***
+AND: **&**, **&&**, **∧**, **\***
 
-OR: **||**, **∨**, **+**
+OR: **|**, **||**, **∨**, **+**
+
+XOR: **^**
 
 IMPLIES: **->**, **→**
 
@@ -66,6 +72,12 @@ things if you want.
 The "and," "or," and "not" operators should be familiar to you, but there's also
 the more exotic "implies" operators. They're not too complicated, though; a
 quick web search should get you situated.
+
+You can also add a prefix or postfix not onto an **and**, **or**, or **xor**
+operator to make it into the corresponding not version (NAND, NOR, NXOR). The
+not is placed around the entire expression, so `(a !& b !& c)` is the same as
+`!(a & b & c)`. If you want to chain them in the traditional way, use
+parenthesis.
 
 You can add names to you expressions. These do not have any particular value,
 instead, every possible true/false combination is run through. If a name has
@@ -103,7 +115,23 @@ Defines macros for true and false.
 - The tables don't print values for intermediate expressions.
 - The tables don't change their column widths to accomodate variables more than
 one letter long.
-- There's not quit command.
+- There's no quit command.
 - There's no way to delete a macro or constraint.
 - History should be saved in a file to allow commands to be quickly recalled.
 - Probably many others...
+
+# COPYRIGHT
+
+Copyright © 2016 Samuel Phillips.
+
+**logic-con** is free software; you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation; either version 3 of the License, or (at your option) any later
+version.
+
+**logic-con** is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see http://www.gnu.org/licenses/.
